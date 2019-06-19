@@ -1,42 +1,28 @@
 (function(){
 
 	var settings = {
-		channel: 'pi-house',
-		publish_key: 'demo',
-		subscribe_key: 'demo'
+		channel: 'Channel-Ruffiana_Plays',
+		publish_key: 'pub-c-486a9fac-91fa-4b7a-b3e3-672a80ca88a4',
+		subscribe_key: 'sub-c-6bbe07d2-921f-11e9-b271-9aa5f5ecb24a'
 	};
 
 	var pubnub = PUBNUB(settings);
 
-	var door = document.getElementById('door');
-	var lightLiving = document.getElementById('lightLiving');
-	var lightPorch = document.getElementById('lightPorch');
-	var fireplace = document.getElementById('fireplace');
+	var speed = document.getElementById('slider-speed');
 
 	pubnub.subscribe({
 		channel: settings.channel,
 		callback: function(m) {
-			if(m.temperature) {
-				document.querySelector('[data-temperature]').dataset.temperature = m.temperature;
-			}
-			if(m.humidity) {
-				document.querySelector('[data-humidity]').dataset.humidity = m.humidity;
-			}
 		}
 	})
 
 	/* 
 		Data settings:
 
-		Servo
-
-		item: 'door'
-		open: true | false
-
 		LED
 
 		item: 'light-*'
-		brightness: 0 - 10
+		speed: 0 - 10
 
 	*/
 
@@ -49,19 +35,7 @@
 
 	// UI EVENTS
 
-	door.addEventListener('change', function(e){
-		publishUpdate({item: 'door', open: this.checked});
-	}, false);
-
-	lightLiving.addEventListener('change', function(e){
-		publishUpdate({item: 'light-living', brightness: +this.value});
-	}, false);
-
-	lightPorch.addEventListener('change', function(e){
-		publishUpdate({item: 'light-porch', brightness: +this.value});
-	}, false);
-
-	fireplace.addEventListener('change', function(e){
-		publishUpdate({item: 'fireplace', brightness: +this.value});
+	speed.addEventListener('change', function(e){
+		publishUpdate({item: 'slider-speed', speed: +this.value});
 	}, false);
 })();
