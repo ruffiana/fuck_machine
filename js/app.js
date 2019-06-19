@@ -1,5 +1,3 @@
-alert( 'Script Running...' );
-
 var settings = {
 	channel: 'Channel-Ruffiana_Plays',
 	publish_key: 'pub-c-486a9fac-91fa-4b7a-b3e3-672a80ca88a4',
@@ -13,8 +11,6 @@ var pubnub = new PubNub(
 		subscribeKey: settings.subscribe_key
 	}
 );
-
-var speedSlider = document.getElementById('speedSlider');
 
 // pubnub.subscribe({
 // 	channel: settings.channel,
@@ -42,7 +38,44 @@ function publishUpdate(data) {
 }
 
 // UI EVENTS
+var speedSlider = document.getElementById('speedSlider');
+
+var img = document.getElementById('img');
+var img_array = [
+	'images/sissy_fuck_machine_1.gif',
+	'images/sissy_fuck_machine_25.gif',
+	'images/sissy_fuck_machine_50.gif',
+	'images/sissy_fuck_machine_75.gif',
+	'images/sissy_fuck_machine.gif',
+	'images/sissy_fuck_machine_150.gif',
+	'images/sissy_fuck_machine_200.gif',
+	'images/sissy_fuck_machine_400.gif',
+	'images/sissy_fuck_machine_800.gif'
+];
+
+function setImage(obj)
+{
+	var value = obj.value;
+	if (value < 1) {
+		img.src = img_array[0];
+	} else if (value < 1) {
+		img.src = img_array[1];
+	} else if (value < 3) {
+		img.src = img_array[2];
+	} else if (value < 5) {
+		img.src = img_array[3];
+	} else if (value < 7) {
+		img.src = img_array[4];
+	} else if (value < 9) {
+		img.src = img_array[5];
+	} else if (value < 10) {
+		img.src = img_array[6];
+	} else {
+		img.src = img_array[7];
+	}
+}
 
 speedSlider.addEventListener('change', function(e){
 	publishUpdate({item: "speedSlider", speed: + this.value});
+	setImage(speedSlider);
 }, false);
