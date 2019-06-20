@@ -131,7 +131,8 @@ label::after {
 
 input[type=range] {
 	-webkit-appearance: none;
-	width: 80%;
+
+	width: 380px;
 }
 input[type=range]::-ms-track {
   cursor: pointer;
