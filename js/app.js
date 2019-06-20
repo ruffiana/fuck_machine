@@ -45,7 +45,7 @@ vid.playbackRate = 0.0
 function setVideoSpeed(obj)
 {
 	var value = obj.value;
-		vid.playbackRate = 5.0 * (obj.value / 10.0;
+		vid.playbackRate = 5.0 * (obj.value / 10.0);
 }
 
 speedSlider.addEventListener('change', function(e){
