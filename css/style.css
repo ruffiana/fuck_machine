@@ -175,3 +175,28 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 	right: 10px;
 	top: 0px;
 }
+
+/* Style buttons */
+[class*="btn"] {
+	background-color: #331111; /* Blue background */
+	border:groove; /* Remove borders */
+	border-width: 3px;
+	border-color: #331111;
+	border-radius: 4px;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	color: #993333; /* White text */
+	width: 34px;
+	line-height: 65px;
+	/*padding: 12px 6px; /* Some padding */
+	padding: 0px; /* Some padding */
+	font-size: 18px; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+	text-align: center;
+ }
+ 
+ /* Darker background on mouse-over */
+ [class*="btn"]:hover {
+	background-color: #643232;
+ }
+ 
