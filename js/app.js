@@ -72,7 +72,7 @@ button9.onclick = function() {onButtonClick(9.0)};
 button10.onclick = function() {onButtonClick(10.0)};
 
 function onButtonClick(val) {
-	// publishUpdate({item: "speedButton", speed: val});
+	publishUpdate({item: "speedButton", speed: val});
 
 	// This is set directly here for testing but should be set by a 
 	// pubnub subcribe message from the remote client
