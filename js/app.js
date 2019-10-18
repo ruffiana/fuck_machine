@@ -49,24 +49,24 @@ pubnub.addListener({
 		var msg = m.message; // The Payload
 		var publisher = m.publisher; //The Publisher
 
-		if (msg.statusOnline || msg.statusOnline == false){
-			if (msg.statusOnline == false) {
+		if (msg.statusOnline) {
+			if (msg.statusOnline == "online") {
+				// console.log("Ruffiana is online");
+				updateLabel("Ruffiana is online");
+				online = true;
+			}
+			else {
 				online = false;
-				console.log("Ruffiana is offline");
+				// console.log("Ruffiana is offline");
 				updateLabel("Ruffiana is offline");
 				speed = 0;
 				resetSpeed( );
-			}
-			else {
-				console.log("Ruffiana is online");
-				updateLabel("Ruffiana is online");
-				online = true;
 			}
 		}
 
 		if (msg.speedCurrent || msg.speedCurrent == 0) {
 			speed = msg.speedCurrent; 
-			console.log("set speed to " + speed);
+			// console.log("set speed to " + speed);
 			setSpeed(speed);
 		}
 	},
@@ -228,4 +228,4 @@ function setSpeed(val) {
 function updateLabel(text) { 
 	var label = document.getElementById("label"); 
 	label.innerHTML = text;
-}
+} 
