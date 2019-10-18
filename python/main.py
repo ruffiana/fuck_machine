@@ -49,7 +49,7 @@ class Subscribe_Listener(SubscribeCallback):
             if status.category == PNStatusCategory.PNConnectedCategory:
                 # This is expected for a subscribe, this means there is no error or issue whatsoever
                 print(f'Connected to {CHANNEL}')
-                msg = {'statusOnline': True}
+                msg = {'statusOnline': 'online'}
                 pubnub.publish().channel(CHANNEL).message(msg).sync()
             elif status.category == PNStatusCategory.PNReconnectedCategory:
                 # This usually occurs if subscribe temporarily fails but reconnects. This means
@@ -98,7 +98,7 @@ class Subscribe_Listener(SubscribeCallback):
         _keys = _message.keys()
 
         if 'requestOnlineStatus' in _keys:
-            msg = {'statusOnline': True}
+            msg = {'statusOnline': 'online'}
             pubnub.publish().channel(CHANNEL).message(msg).sync()
 
         if 'requestSpeedCurrent' in _keys:
@@ -131,7 +131,13 @@ def main( ):
 
         print('Active. Press CTRL-C to exit.')
         while True:
-            pass
+            # Push an update every 10 seconds to keep connection active
+            sleep(10)
+            msg = {
+                'speedCurrent': my_listener.speed_control.speed},
+                'statusOnline': 'online'
+                }
+            pubnub.publish().channel(CHANNEL).message(msg).sync()
     except KeyboardInterrupt:
         # here you put any code you want to run before the program   
         # exits when you press CTRL+C
@@ -142,13 +148,9 @@ def main( ):
         # so only use it once your code is working  
         print( "Other error or exception occurred!" )
     finally:
-        msgs = [
-            {'speedCurrent': 0},
-            {'statusOnline': False}
-        ]
-        for m in msgs:
-            pubnub.publish().channel(CHANNEL).message(m).sync()
-        
+        msgs = {'speedCurrent': 0, 'statusOnline': 'offline'}
+        pubnub.publish().channel(CHANNEL).message(m).sync()
+
         pubnub.unsubscribe_all()
         my_listener.speed_control.cleanup()
         sys.exit(1)
