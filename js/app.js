@@ -59,7 +59,7 @@ pubnub.addListener({
 		}
 
 		if (msg.speedCurrent) { speed = msg.speedCurrent }
-		else { speed = 0 }
+		else { speed = -1 }
 		console.log("set speed to " + speed);
 		setSpeed(speed);
 	},
