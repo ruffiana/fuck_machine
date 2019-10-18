@@ -1,3 +1,5 @@
+var online = false;
+
 // PubNub config
 var settings = {
 	channel: 'Channel-Ruffiana_Plays',
@@ -41,15 +43,22 @@ pubnub.addListener({
 		var pubTT = m.timetoken; // Publish timetoken
 		var msg = m.message; // The Payload
 		var publisher = m.publisher; //The Publisher
-		// console.log(msg);
-		console.log(msg)
+
+		if(msg.statusOnline) {
+			online = msg.statusOnline;
+			if (online == true) {
+				console.log("Ruffiana is online");
+				updateLabel("Ruffiana is online");
+			}
+			else {
+				console.log("Ruffiana is offline");
+				updateLabel("Ruffiana is offline");
+			}
+	}
 		if(msg.speedCurrent) {
 			var speed = msg.speedCurrent
 			console.log("set speed to " + msg.speedCurrent);
 			setSpeed(msg.speedCurrent);
-		}
-		if(msg.statusOnline) {
-			console.log("Ruffiana is online");
 		}
 	},
 	presence: function(p) {
@@ -138,7 +147,7 @@ function onLoad() {
 	publishRequestSpeedCurrent();
 };
 
-// UI EVENTS
+// UI EVENTS	 
 /* video */
 var vid = document.getElementById('vid');
 vid.playbackRate = 0.0;
@@ -169,23 +178,36 @@ button9.onclick = function() {onButtonClick(9.0)};
 button10.onclick = function() {onButtonClick(10.0)};
 
 function onButtonClick(val) {
-	publishRequestSpeedChange(val);
-
+	if (online == true) {
+		publishRequestSpeedChange(val);
+	}
 	// This is set directly here for testing but should be set by a 
 	// pubnub subcribe message from the remote client
 	// setSpeed(val);
 };
 
+
+var css_style = getComputedStyle(document.documentElement);
+var col_btn_inactive_bg = css_style.getPropertyValue('--inactive-bg_color');
+var col_btn_inactive_fg = css_style.getPropertyValue('--inactive-fg_color');
+var col_btn_active_bg = css_style.getPropertyValue('--active-bg_color');
+var col_btn_active_fg = css_style.getPropertyValue('--active-fg_color');
+
 function setSpeed(val) {
 	// sets color and background color of button elements based on speed
 	for (i = 0; i <= val; i++) {
-		document.getElementById('button'+i).style.color = "#f2a0c0";
-		document.getElementById('button'+i).style.backgroundColor = "#ec6597";
+		document.getElementById('button'+i).style.color = col_btn_active_fg;
+		document.getElementById('button'+i).style.backgroundColor = col_btn_active_bg;
 	};
 	for (i = val+1; i <= 10; i++) {
-		document.getElementById('button'+i).style.color = "#333399";
-		document.getElementById('button'+i).style.backgroundColor = "#111133";
+		document.getElementById('button'+i).style.color = col_btn_inactive_fg;
+		document.getElementById('button'+i).style.backgroundColor = col_btn_inactive_bg;
 	};
 		
 	vid.playbackRate = 5.0 * (val / 10.0);
 };
+
+function updateLabel(text) { 
+	var label = document.getElementById("label"); 
+	label.innerHTML = text;
+} 
