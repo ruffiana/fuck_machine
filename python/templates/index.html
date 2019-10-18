@@ -6,7 +6,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="ruffiana.plays@gmail.com">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
@@ -15,15 +15,15 @@
 	<header>
 		<table>
 			<tr>
-				<td><img src="images/Ruffiana_small.jpg"></td>
+				<td><img src="{{ url_for('static', filename='images/Ruffiana_small.jpg') }}"></td>
 				<td>RUFFIANA'S<br>PLAYGROUND</td>
 			</tr>
 		</table>
 		<!-- <div class="pubnub"></div> -->
 	</header>
 	<section>
-		<video id="vid" loop muted autoplay>
-			<source src="video/sissy_fuck_machine.mp4" type="video/mp4">
+		<video id="vid" loop muted autoplay style="display: {{ hide_video }};">
+			<source src="{{ url_for('static', filename='video/sissy_fuck_machine.mp4') }}" type="video/mp4">
 			<!-- <source src="video/test.mp4" type="video/mp4"> -->
 		</video>
 		<!-- <h3>Use slider to control speed of fuck machine.</h3> -->
@@ -51,6 +51,6 @@
 	<small>(version 1.3)</small>
 	</footer>
 
-	<script src="js/fckmsheen.js"></script>
+	<script src="{{ url_for('static', filename='js/fckmsheen.js') }}"></script>
 </body>
 </html>

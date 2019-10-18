@@ -2,14 +2,16 @@ var vid;
 
 function refreshDisplay()
 {
-	$.post({
+	$.ajax({
+		type: 'POST',
 		url: "receiver",
+		dataType: "json",
 		data: 
 		{
 			action: 'statusChk',
 		},
-		dataType: "json",
-		type: 'POST',
+		
+		
 		success: function(data)
 		{
 			console.log(data);
@@ -25,15 +27,15 @@ function refreshDisplay()
 
 function sendSpeedClick(value)
 {
-	$.post({
+	$.ajax({
+		type: 'POST',
 		url: "receiver",
+		dataType: "json",
 		data: 
 		{
 			action: 'sendSpeed',
 			speed: value
 		},
-		dataType: "json",
-		type: 'POST',
 		success: function(data)
 		{
 			console.log(data);
@@ -52,7 +54,7 @@ function sendSpeedClick(value)
 
 function setLabel(value)
 {
-	if(value)
+	if(value == true)
 		$("#label").html("Ruffiana is online");
 	else
 		$("#label").html("Ruffiana is offline");
