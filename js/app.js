@@ -14,68 +14,97 @@ var pubnub = new PubNub(
 	}
 );
 
+console.log("Subscribing..");
+pubnub.subscribe({
+	 channels: [settings.channel]
+});
+
+// {"statusOnline":True, "speedCurrent":4}
+// pubnub.subscribe({
+// 	channel: settings.channel,
+// 	callback: function(m) {
+// 		if(m.speedCurrent) {
+// 			setSpeed(m.speedCurrent);
+// 			console.log("set speed to " + m.speedCurrent);
+// 		}
+// 		if(m.statusOnline) {
+// 			console.log("Ruffiana is online");
+// 		}
+// 	}
+// })
+
 pubnub.addListener({
 	message: function(m) {
-		 // handle message
-		 var channelName = m.channel; // The channel for which the message belongs
-		 var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
-		 var pubTT = m.timetoken; // Publish timetoken
-		 var msg = m.message; // The Payload
-		 var publisher = m.publisher; //The Publisher
+		// handle message
+		var channelName = m.channel; // The channel for which the message belongs
+		var channelGroup = m.subscription; // The channel group or wildcard subscription match (if exists)
+		var pubTT = m.timetoken; // Publish timetoken
+		var msg = m.message; // The Payload
+		var publisher = m.publisher; //The Publisher
+		// console.log(msg);
+		console.log(msg)
+		if(msg.speedCurrent) {
+			var speed = msg.speedCurrent
+			console.log("set speed to " + msg.speedCurrent);
+			setSpeed(msg.speedCurrent);
+		}
+		if(msg.statusOnline) {
+			console.log("Ruffiana is online");
+		}
 	},
 	presence: function(p) {
-		 // handle presence
-		 var action = p.action; // Can be join, leave, state-change or timeout
-		 var channelName = p.channel; // The channel for which the message belongs
-		 var occupancy = p.occupancy; // No. of users connected with the channel
-		 var state = p.state; // User State
-		 var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
-		 var publishTime = p.timestamp; // Publish timetoken
-		 var timetoken = p.timetoken;  // Current timetoken
-		 var uuid = p.uuid; // UUIDs of users who are connected with the channel
+		// handle presence
+		var action = p.action; // Can be join, leave, state-change or timeout
+		var channelName = p.channel; // The channel for which the message belongs
+		var occupancy = p.occupancy; // No. of users connected with the channel
+		var state = p.state; // User State
+		var channelGroup = p.subscription; //  The channel group or wildcard subscription match (if exists)
+		var publishTime = p.timestamp; // Publish timetoken
+		var timetoken = p.timetoken;  // Current timetoken
+		var uuid = p.uuid; // UUIDs of users who are connected with the channel
 	},
 	signal: function(s) {
-		 // handle signal
-		 var channelName = s.channel; // The channel for which the signal belongs
-		 var channelGroup = s.subscription; // The channel group or wildcard subscription match (if exists)
-		 var pubTT = s.timetoken; // Publish timetoken
-		 var msg = s.message; // The Payload
-		 var publisher = s.publisher; //The Publisher
+		// handle signal
+		var channelName = s.channel; // The channel for which the signal belongs
+		var channelGroup = s.subscription; // The channel group or wildcard subscription match (if exists)
+		var pubTT = s.timetoken; // Publish timetoken
+		var msg = s.message; // The Payload
+		var publisher = s.publisher; //The Publisher
 	},
 	user: function(userEvent) {
-		 // for Objects, this will trigger when:
-		 // . user updated
-		 // . user deleted
+		// for Objects, this will trigger when:
+		// . user updated
+		// . user deleted
 	},
 	space: function(spaceEvent) {
-		 // for Objects, this will trigger when:
-		 // . space updated
-		 // . space deleted
+		// for Objects, this will trigger when:
+		// . space updated
+		// . space deleted
 	},
 	membership: function(membershipEvent) {
-		 // for Objects, this will trigger when:
-		 // . user added to a space
-		 // . user removed from a space
-		 // . membership updated on a space
+		// for Objects, this will trigger when:
+		// . user added to a space
+		// . user removed from a space
+		// . membership updated on a space
 	},
 	messageAction: function(ma) {
-		 // handle message action
-		 var channelName = ma.channel; // The channel for which the message belongs
-		 var publisher = ma.publisher; //The Publisher
-		 var event = ma.message.event; // message action added or removed
-		 var type = ma.message.data.type; // message action type
-		 var value = ma.message.data.value; // message action value
-		 var messageTimetoken = ma.message.data.messageTimetoken; // The timetoken of the original message
-		 var actionTimetoken = ma.message.data.actionTimetoken; //The timetoken of the message action
+		// handle message action
+		var channelName = ma.channel; // The channel for which the message belongs
+		var publisher = ma.publisher; //The Publisher
+		var event = ma.message.event; // message action added or removed
+		var type = ma.message.data.type; // message action type
+		var value = ma.message.data.value; // message action value
+		var messageTimetoken = ma.message.data.messageTimetoken; // The timetoken of the original message
+		var actionTimetoken = ma.message.data.actionTimetoken; //The timetoken of the message action
 	},
 	status: function(s) {
-		 var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
-		 var affectedChannels = s.affectedChannels; // The channels affected in the operation, of type array.
-		 var category = s.category; //Returns PNConnectedCategory
-		 var operation = s.operation; //Returns PNSubscribeOperation
-		 var lastTimetoken = s.lastTimetoken; //The last timetoken used in the subscribe request, of type long.
-		 var currentTimetoken = s.currentTimetoken; //The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
-		 var subscribedChannels = s.subscribedChannels; //All the current subscribed channels, of type array.
+		var affectedChannelGroups = s.affectedChannelGroups; // The channel groups affected in the operation, of type array.
+		var affectedChannels = s.affectedChannels; // The channels affected in the operation, of type array.
+		var category = s.category; //Returns PNConnectedCategory
+		var operation = s.operation; //Returns PNSubscribeOperation
+		var lastTimetoken = s.lastTimetoken; //The last timetoken used in the subscribe request, of type long.
+		var currentTimetoken = s.currentTimetoken; //The current timetoken fetched in the subscribe response, which is going to be used in the next request, of type long.
+		var subscribedChannels = s.subscribedChannels; //All the current subscribed channels, of type array.
 	}
 });
 
@@ -90,15 +119,18 @@ function publishUpdate(data) {
 };
 
 function publishRequestOnlineStatus() {
-	publishUpdate({item: "onlineStatus"});
+	console.log("Requesting online status");
+	publishUpdate({requestOnlineStatus: 1});
 };
 
 function publishRequestSpeedCurrent() {
-	publishUpdate({item: "speedCurrent"});
+	console.log("Requesting current speed");
+	publishUpdate({requestSpeedCurrent: 1});
 };
 
 function publishRequestSpeedChange(val) {
-	publishUpdate({item: "speedChangeRequest", speed: val});
+	console.log("Requesting speed change");
+	publishUpdate({requestSpeedChange: val});
 };
 
 function onLoad() {
@@ -110,15 +142,6 @@ function onLoad() {
 /* video */
 var vid = document.getElementById('vid');
 vid.playbackRate = 0.0;
-
-/* slider bar */
-// var speedSlider = document.getElementById('speedSlider');
-
-// speedSlider.addEventListener('change', onSliderChanged(this.value), false);
-// function onSliderChanged(val) {
-// 	// publishUpdate({item: "speedSlider", speed: val});
-// 	setSpeed(val);
-// };
 
 /* speed buttons */
 var button0 = document.getElementById('button0');
@@ -146,19 +169,11 @@ button9.onclick = function() {onButtonClick(9.0)};
 button10.onclick = function() {onButtonClick(10.0)};
 
 function onButtonClick(val) {
-	publishRequestSpeedChange();
+	publishRequestSpeedChange(val);
 
 	// This is set directly here for testing but should be set by a 
 	// pubnub subcribe message from the remote client
-	setSpeed(val);
-};
-
-function onButtonClick(val) {
-	publishUpdate({item: "speedChangeRequest", speed: val});
-
-	// This is set directly here for testing but should be set by a 
-	// pubnub subcribe message from the remote client
-	setSpeed(val);
+	// setSpeed(val);
 };
 
 function setSpeed(val) {
@@ -168,8 +183,8 @@ function setSpeed(val) {
 		document.getElementById('button'+i).style.backgroundColor = "#ec6597";
 	};
 	for (i = val+1; i <= 10; i++) {
-		document.getElementById('button'+i).style.color = "#993333";
-		document.getElementById('button'+i).style.backgroundColor = "#331111";
+		document.getElementById('button'+i).style.color = "#333399";
+		document.getElementById('button'+i).style.backgroundColor = "#111133";
 	};
 		
 	vid.playbackRate = 5.0 * (val / 10.0);
