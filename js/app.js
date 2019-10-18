@@ -1,4 +1,5 @@
 var online = false;
+var speed = 0;
 
 // PubNub config
 var settings = {
@@ -21,7 +22,8 @@ pubnub.subscribe({
 	 channels: [settings.channel]
 });
 
-// {"statusOnline":True, "speedCurrent":4}
+// {"statusOnline":true}
+// {"speedCurrent":4}
 // pubnub.subscribe({
 // 	channel: settings.channel,
 // 	callback: function(m) {
@@ -54,12 +56,13 @@ pubnub.addListener({
 				console.log("Ruffiana is offline");
 				updateLabel("Ruffiana is offline");
 			}
-	}
-		if(msg.speedCurrent) {
-			var speed = msg.speedCurrent
-			console.log("set speed to " + msg.speedCurrent);
-			setSpeed(msg.speedCurrent);
 		}
+
+		if (msg.speedCurrent) { speed = msg.speedCurrent }
+		else { speed = 0 }
+		console.log("set speed to " + speed);
+		setSpeed(speed);
+
 	},
 	presence: function(p) {
 		// handle presence
@@ -134,7 +137,7 @@ function publishRequestOnlineStatus() {
 
 function publishRequestSpeedCurrent() {
 	console.log("Requesting current speed");
-	publishUpdate({requestSpeedCurrent: 1});
+	publishUpdate({requestSpeedCurrent: 0});
 };
 
 function publishRequestSpeedChange(val) {
