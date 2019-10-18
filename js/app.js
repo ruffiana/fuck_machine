@@ -49,7 +49,8 @@ pubnub.addListener({
 		var msg = m.message; // The Payload
 		var publisher = m.publisher; //The Publisher
 
-		if (msg.statusOnline && msg.statusOnline == true) {
+		online = (msg.statusOnline && msg.statusOnline == true);
+		if (online) {
 			console.log("Ruffiana is online");
 			updateLabel("Ruffiana is online");
 		}
@@ -58,8 +59,13 @@ pubnub.addListener({
 			updateLabel("Ruffiana is offline");
 		}
 
-		if (msg.speedCurrent) { speed = msg.speedCurrent }
-		else { speed = -1 }
+		if (online && msg.speedCurrent) {
+			speed = msg.speedCurrent
+		}
+		else {
+			resetSpeed( )
+			speed = 0
+		}
 		console.log("set speed to " + speed);
 		setSpeed(speed);
 	},
@@ -194,6 +200,15 @@ var col_btn_inactive_bg = css_style.getPropertyValue('--inactive-bg_color');
 var col_btn_inactive_fg = css_style.getPropertyValue('--inactive-fg_color');
 var col_btn_active_bg = css_style.getPropertyValue('--active-bg_color');
 var col_btn_active_fg = css_style.getPropertyValue('--active-fg_color');
+
+function resetSpeed( ){
+	for (i = 0; i <= 10; i++) {
+		document.getElementById('button'+i).style.color = col_btn_inactive_fg;
+		document.getElementById('button'+i).style.backgroundColor = col_btn_inactive_bg;
+	};
+		
+	vid.playbackRate = 0.0;
+}
 
 function setSpeed(val) {
 	// sets color and background color of button elements based on speed
