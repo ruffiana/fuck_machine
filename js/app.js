@@ -49,16 +49,14 @@ pubnub.addListener({
 		var msg = m.message; // The Payload
 		var publisher = m.publisher; //The Publisher
 
-		if (msg.statusOnline) {
-			online = msg.statusOnline;
+		if (msg.statusOnline && msg.statusOnline == true) {
 			console.log("Ruffiana is online");
 			updateLabel("Ruffiana is online");
 		}
 		else {
-			online == false;
 			console.log("Ruffiana is offline");
 			updateLabel("Ruffiana is offline");
-		};
+		}
 
 		if (msg.speedCurrent) { speed = msg.speedCurrent }
 		else { speed = 0 }
