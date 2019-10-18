@@ -4,9 +4,18 @@
 	box-sizing: border-box;
 } */
 
+:root {
+	--main-bg-color: #220b0b;
+	--main-fg-color: #ec0c57;
+	--inactive-bg_color: #1e2a61;
+	--inactive-fg_color: #4d77eb;
+	--active-bg_color: #ec6597;
+	--active-fg_color: #f2a0c0;
+ }
+
 html {
 	margin: 1vmin;
-	background: #220b0b;
+	background: var(--main-bg-color);
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 	/* text-rendering: optimizeLegibility; */
 }
@@ -15,7 +24,7 @@ header {
 	/* line-height: 32px; */
 	/* font-weight: 100;
 	letter-spacing: 6px; */
-	color: #ec0c57;
+	color: var(--main-fg-color);
 }
 header img {
 	width: 15vmin;
@@ -46,6 +55,7 @@ p, footer {
 
 footer {
 	font-size: 3vmin;
+	color: var(--main-fg-color);
 	/* clear: both;
 	text-align: right;
 	margin-top: 4em; */
@@ -55,34 +65,19 @@ footer {
 
 /* Layout */
 .divider{
-	width:5px;
+	width: 5px;
 	height:auto;
 	display:inline-block;
 }
 
 
 /* UI component styles */
-/* label {
-	padding-left: 16px;
-	padding-right: 16px;
-	color: #FFFFFF;
+label {
+	font-size: 3vmin; /* Set a font size */
+	/* padding-left: 16px;
+	padding-right: 16px; */
+	color: var(--main-fg-color);
 }
-label::before {
-	content: "0";
-	font-size: 28px;
-	position: relative;
-	top: 6px;
-	left: -4px;
-	opacity: 0.5;
-}
-label::after {
-	content: "10";
-	font-size: 32px;
-	position: relative;
-	top: 4px;
-	right: 4px;
-	opacity: 1.0;
-} */
 
 video{
 	width: 92vmin;
@@ -91,14 +86,14 @@ video{
 /* Style buttons */
 [class*="btn"] {
 	margin:0.1vmin;
-	background-color: #111133; /* Blue background */
+	background-color: var(--inactive-bg_color);
 	border:none;
 	/* border-width: 3px;
 	border-color: #331111; */
 	/* border-radius: 4px;
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12; */
-	color: #333399;
+	color: var(--inactive-fg_color);
 	width: 7vmin;
 	line-height: 12vmin;
 	font-size: 6vmin; /* Set a font size */
