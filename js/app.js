@@ -60,13 +60,14 @@ pubnub.addListener({
 		}
 
 		if (online && msg.speedCurrent) {
-			speed = msg.speedCurrent
+			speed = msg.speedCurrent;
 			console.log("set speed to " + speed);
 			setSpeed(speed);
 		}
 		else {
-			resetSpeed( )
-			speed = 0
+			console.log("offline - reset speed" + speed);
+			resetSpeed( );
+			speed = 0;
 		}
 	},
 	presence: function(p) {
