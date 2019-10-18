@@ -17,6 +17,9 @@ var pubnub = new PubNub(
 	}
 );
 
+
+
+// Setup PubNub
 console.log("Subscribing..");
 pubnub.subscribe({
 	 channels: [settings.channel]
@@ -46,23 +49,21 @@ pubnub.addListener({
 		var msg = m.message; // The Payload
 		var publisher = m.publisher; //The Publisher
 
-		if(msg.statusOnline) {
+		if (msg.statusOnline) {
 			online = msg.statusOnline;
-			if (online == true) {
-				console.log("Ruffiana is online");
-				updateLabel("Ruffiana is online");
-			}
-			else {
-				console.log("Ruffiana is offline");
-				updateLabel("Ruffiana is offline");
-			}
+			console.log("Ruffiana is online");
+			updateLabel("Ruffiana is online");
 		}
+		else {
+			online == false;
+			console.log("Ruffiana is offline");
+			updateLabel("Ruffiana is offline");
+		};
 
 		if (msg.speedCurrent) { speed = msg.speedCurrent }
 		else { speed = 0 }
 		console.log("set speed to " + speed);
 		setSpeed(speed);
-
 	},
 	presence: function(p) {
 		// handle presence
