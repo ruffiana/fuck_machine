@@ -1,21 +1,29 @@
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         {% if title %}
-        <title>{{ title }} - Microblog</title>
+        <title>{{ title }} - Ruffiana's Playground</title>
         {% else %}
-        <title>Welcome to Microblog</title>
+        <title>Ruffiana's Playground</title>
         {% endif %}
+        <meta name="description" content="">
+        <meta name="author" content="ruffiana.plays@gmail.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div>
-            Microblog:
-            <a href="{{ url_for('index') }}">Home</a>
-            {% if current_user.is_anonymous %}
-            <a href="{{ url_for('login') }}">Login</a>
-            {% else %}
-            <a href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
-        </div>
+        <header>
+            <table>
+                <tr>
+                    <td><img src="{{ url_for('static', filename='images/Ruffiana_small.jpg') }}"></td>
+                    <td>RUFFIANA'S<br>PLAYGROUND</td>
+                </tr>
+            </table>
+            <!-- <div class="pubnub"></div> -->
+        </header>
         <hr>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -27,5 +35,9 @@
         {% endif %}
         {% endwith %}
         {% block content %}{% endblock %}
-    </body>
+    <footer>
+    <small>(version 1.3)</small>
+    </footer>
+
+</body>
 </html>
