@@ -62,9 +62,15 @@ function setLabel(value)
 
 function setSpeed(value)
 {
-	$(".speedbtn").removeClass("activebtn");
-	$(".speedbtn:eq("+value+")").addClass("activebtn");
-		
+	// sets color and background color of button elements based on speed
+	for (i = 0; i <= 10; i++) {
+		if (i <= value)
+			$(".speedbtn:eq("+i+")").addClass("activebtn");
+		else
+			$(".speedbtn:eq("+i+")").removeClass("activebtn");
+	};
+	
+	// set playback speed of video
 	vid.playbackRate = 5.0 * (value / 10.0);
 }
 
@@ -82,5 +88,5 @@ window.onload = function()
 	window.setInterval(function()
 	{
 		refreshDisplay();
-	}, 500);
+	}, 3000);
 }
