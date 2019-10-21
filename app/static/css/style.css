@@ -5,18 +5,20 @@
 } */
 
 :root {
-	--main-bg-color: #220b0b;
+	--main-bg-color: #360717;
 	--main-fg-color: #ec0c57;
 	--inactive-bg_color: #1e2a61;
 	--inactive-fg_color: #4d77eb;
 	--active-bg_color: #ec6597;
 	--active-fg_color: #f2a0c0;
+	--hover-bc_color: #2a397a;
  }
 
 
 .speedbtn
 {
 	margin:0.1vmin;
+	color: var(--inactive-fg_color);
 	background-color: var(--inactive-bg_color);
 	border:none;
 	/* border-width: 3px;
@@ -24,7 +26,6 @@
 	/* border-radius: 4px;
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12; */
-	color: var(--inactive-fg_color);
 	width: 7vmin;
 	line-height: 12vmin;
 	font-size: 6vmin; /* Set a font size */
@@ -33,7 +34,7 @@
 }
 .speedbtn:hover
 {
-	background-color: #2a2961;
+	background-color: var(--hover-bc_color);
 }
 
 .activebtn
