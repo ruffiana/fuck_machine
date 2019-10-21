@@ -16,6 +16,6 @@ pip3 install flask_wtf
 
 # how to start
 in root directory of project type:
-flask run
+flask run --host=0.0.0.0 --port=80
 
 open 127.0.0.1:5000 in your browser
