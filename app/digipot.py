@@ -64,8 +64,13 @@ class Speed_Control():
         #print( f'speed:{speed}, min_speed={min_speed}, max_speed={max_speed}, max_out={max_out}')
         # make sure given speed is between 0 and 10
         speed = max(min_speed, min(speed, max_speed))
+
+        # speed control works inverse to increased resistance, so need to
+        # invert the speed value
+        speed = 10 - speed
+
         self._speed = speed
-        
+
         # Scale speed to a range of 0-127
         speed = int(speed * (max_out / max_speed))
         
