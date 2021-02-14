@@ -1,21 +1,12 @@
-# ruffiana.github.io
-Come play with me
-
+This project is intended to be used on a RPI (Raspberry Pi) in conjunction with a digital potenitiometer as the speed control for your fuck machine motor speed control.
 
 # install python libs
 pip install Flask
-
 pip install flask_sqlalchemy
-
 pip install git+https://github.com/sn4k3/FakeRPi
-
 pip install flask-login
+pip install flask_wtf
 
-pip3 install flask_wtf
-
-
-# how to start
+# How to Start
 in root directory of project type:
-flask run --host=0.0.0.0 --port=80
-
-open 127.0.0.1:5000 in your browser
+"sudo python3 Python/fuck_machine/main.py"
