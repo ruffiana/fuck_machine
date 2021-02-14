@@ -13,4 +13,5 @@ pip install flask_wtf
 
 # How to Start
 in root directory of project type:
+
 "sudo python3 Python/fuck_machine/main.py"
