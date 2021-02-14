@@ -1,0 +1,138 @@
+/* * {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+} */
+
+:root {
+	--main-bg-color: #360717;
+	--main-fg-color: #ec0c57;
+	--inactive-bg_color: #1e2a61;
+	--inactive-fg_color: #4d77eb;
+	--active-bg_color: #ec6597;
+	--active-fg_color: #f2a0c0;
+	--hover-bc_color: #2a397a;
+ }
+
+
+.speedbtn
+{
+	margin:0.1vmin;
+	color: var(--inactive-fg_color);
+	background-color: var(--inactive-bg_color);
+	border:none;
+	/* border-width: 3px;
+	border-color: #331111; */
+	/* border-radius: 4px;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12; */
+	width: 7vmin;
+	line-height: 12vmin;
+	font-size: 6vmin; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+	text-align: center;
+}
+.speedbtn:hover
+{
+	background-color: var(--hover-bc_color);
+}
+
+.activebtn
+{
+	color: var(--active-fg_color) !important;
+	background-color: var(--active-bg_color) !important;
+}
+
+
+html {
+	margin: 1vmin;
+	background: var(--main-bg-color);
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	/* text-rendering: optimizeLegibility; */
+}
+header {
+	font-size: 6vmin; /*32px;*/
+	/* line-height: 32px; */
+	/* font-weight: 100;
+	letter-spacing: 6px; */
+	color: var(--main-fg-color);
+}
+header img {
+	width: 15vmin;
+	/* height: 64px; */
+	/* position: relative;
+	top: 5vmin; */
+}
+section {
+	margin: 0vmin;
+}
+
+/* h1, h2, h3 {
+	color: #555;
+	text-rendering: optimizeLegibility;
+}
+h1 {
+	font-size: 3.25em;
+	font-weight: normal;
+}
+h2 {
+	font-size: 1.2em;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+p, footer {
+	margin: 1em 0 .5em;
+}*/
+
+footer {
+	font-size: 3vmin;
+	color: var(--main-fg-color);
+	/* clear: both;
+	text-align: right;
+	margin-top: 4em; */
+}
+/* footer .credit {
+}  */
+
+/* Layout */
+.divider{
+	width: 5px;
+	height:auto;
+	display:inline-block;
+}
+
+
+/* UI component styles */
+label {
+	font-size: 3vmin; /* Set a font size */
+	/* padding-left: 16px;
+	padding-right: 16px; */
+	color: var(--main-fg-color);
+}
+
+video{
+	width: 92vmin;
+}
+
+/* Style buttons */
+[class*="btn"] {
+	margin:0.1vmin;
+	background-color: var(--inactive-bg_color);
+	border:none;
+	/* border-width: 3px;
+	border-color: #331111; */
+	/* border-radius: 4px;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12; */
+	color: var(--inactive-fg_color);
+	width: 7vmin;
+	line-height: 12vmin;
+	font-size: 6vmin; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+	text-align: center;
+ }
+ 
+ /* Darker background on mouse-over */
+ [class*="btn"]:hover {
+	background-color: #2a2961;
+ }
