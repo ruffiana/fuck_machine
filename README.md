@@ -1,6 +1,6 @@
 This project is intended to be used on a RPI (Raspberry Pi) in conjunction with a digital potenitiometer as the speed control for your fuck machine motor speed control.
 
-# install python libs
+# Install Python Libs
 pip install Flask
 pip install flask_sqlalchemy
 pip install git+https://github.com/sn4k3/FakeRPi
