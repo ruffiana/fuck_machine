@@ -15,7 +15,7 @@ log.setLevel(logging.ERROR)
 
 # globals
 app = Flask(__name__)
-speed_control = Speed_Control(max_speed=config.MAX_SPEED)
+speed_control = Speed_Control(speed_limit=config.SPEED_LIMIT)
 
 
 # base html page
