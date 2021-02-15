@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Learn more: https://github.com/ruffiana/SissyUniversity/setup.py
+# Learn more: https://github.com/ruffiana/fuck_machine/
 
 from setuptools import setup, find_packages
 
