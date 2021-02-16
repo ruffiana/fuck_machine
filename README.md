@@ -6,15 +6,15 @@ This project is intended to be used on a RPI (Raspberry Pi) in conjunction with 
 
 While active, you can access the HTML interface via the local IP address of the computer on the network through the default TCP port of 80. I reccmeond you reserve an IP for your RPI.
 
-On RPI or computer running test code:
+On the RPI or same computer running test code:
 
 `http://127.0.0.1/`
 
 On RPI from other devices on same network:
 
-`http://[local IP of RPI]/`(ex:10.0.0.101)
+`http://[local IP of RPI]` - (ex: http://10.0.0.101)
 
-You can make this publicly accessible by adding a port forward to your router which forward 80 requests to the network IP of the device running the code:
+You can make this accessible to anyone on the internet by adding a port forward to your router which forward 80 requests to the network IP of the device running the code:
 
 https://www.howtogeek.com/66214/how-to-forward-ports-on-your-router/
 
