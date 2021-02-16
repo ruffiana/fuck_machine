@@ -1,3 +1,6 @@
+Fuck Machine Control
+![Alt text](static/images/Screenshot_01.jpg?raw=true "Screenshot")
+
 This project is intended to be used on a RPI (Raspberry Pi) in conjunction with a digital potenitiometer as the speed control for a fuck machine motor speed control.
 
 While active, you can access the HTML interface via the local IP address of the computer on the network through the default TCP port of 80. I reccmeond you reserve an IP for your RPI.
