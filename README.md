@@ -1,6 +1,7 @@
-Fuck Machine Control
-![Alt text](static/images/Screenshot_01.jpg?raw=true "Screenshot")
+# Fuck Machine Web-Page Control
+![Screenshot](static/images/Screenshot_01.JPG)
 
+## Overview
 This project is intended to be used on a RPI (Raspberry Pi) in conjunction with a digital potenitiometer as the speed control for a fuck machine motor speed control.
 
 While active, you can access the HTML interface via the local IP address of the computer on the network through the default TCP port of 80. I reccmeond you reserve an IP for your RPI.
@@ -17,14 +18,14 @@ You can make this publicly accessible by adding a port forward to your router wh
 
 https://www.howtogeek.com/66214/how-to-forward-ports-on-your-router/
 
-**If you know ways to make this configuration more secure, please let me know via comment here or email.**
+**If you know ways to make this configuration more secure, please let me know via email or comment**
 
-# Install Python Libs
+## Install Python Libs
 * pip install Flask
 
 Install on Windows or other systems that don't have RPi.GPIO libraries
 * pip install git+https://github.com/sn4k3/FakeRPi
 
-# How to Start
+## How to Start
 On RPI in root directory of project enter:
 `"sudo python3 Python/fuck_machine/main.py"`
