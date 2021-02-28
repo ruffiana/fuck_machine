@@ -5,8 +5,8 @@
 #     'sqlite:///' + os.path.join(basedir, 'app.db')
 # SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-SPEED_LIMIT = 50
+SPEED_LIMIT = 75
 PORT = 80
-SHOW_VIDEO = True
+SHOW_VIDEO = False
 online = True
 speed = 0
