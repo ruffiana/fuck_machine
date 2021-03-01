@@ -118,7 +118,7 @@ function setLabel(value) {
 		$("#label").html("Syncing...");
 }
 
-function setSpeed(value)
+function setSpeed(value) {
 	// update slider to reflect current speed
 	slider.value = value;
 

@@ -11,6 +11,10 @@
 	--slider_border_color: #9e409e;
 	--track_color: #88888825;
 	--track_focus_color: #88888850;
+	--track_height: 32px;
+	--button_height: 32px;
+	--button_width: 48px;
+	--button_corner: 16px;	
  }
 
 html {
@@ -66,8 +70,8 @@ footer {
 /* Layout */
 .divider{
 	width: 5px;
-	height:auto;
-	display:inline-block;
+	height: auto;
+	display: inline-block;
 }
 
 /* Table padding */
@@ -97,18 +101,16 @@ input[type=range] {
 	outline: none;
   }
   input[type=range]::-webkit-slider-runnable-track {
-	background: var(--track_color); /*#46262c*/
+	background: var(--track_color);
 	/* border: 0; */
-	height: 32px;
+	height: var(--slider_height);
 	cursor: pointer;
   }
   input[type=range]::-webkit-slider-thumb {
-	margin-top: 3.1px;
-	width: 34px;
-	height: 25px;
+	width: var(--button_width);
+	height: var(--button_height);
 	background: var(--slider_color);
-	/* border: 2.9px solid var(--slider_border_color); */
-	border-radius: 28px;
+	border-radius: var(--button_corner);
 	cursor: pointer;
 	-webkit-appearance: none;
   }
@@ -116,17 +118,16 @@ input[type=range] {
 	background: var(--var(--track_focus_color));
   }
   input[type=range]::-moz-range-track {
-	background: var(--track_color); /*#46262c*/
+	background: var(--track_color);
 	border: 0;
-	height: 31.2px;
+	height: var(--slider_height);
 	cursor: pointer;
   }
   input[type=range]::-moz-range-thumb {
-	width: 34px;
-	height: 25px;
+	width: var(--button_width);
+	height: var(--button_height);
 	background: var(--slider_color);
-	/* border: 2.9px solid var(--slider_border_color); */
-	border-radius: 28px;
+	border-radius: var(--button_corner);
 	cursor: pointer;
   }
   input[type=range]::-ms-track {
@@ -134,7 +135,7 @@ input[type=range] {
 	border-color: transparent;
 	border-width: 0 0;
 	color: transparent;
-	height: 31.2px;
+	height: var(--slider_height);
 	cursor: pointer;
   }
   input[type=range]::-ms-fill-lower {
@@ -146,13 +147,11 @@ input[type=range] {
 	border: 0;
   }
   input[type=range]::-ms-thumb {
-	width: 34px;
-	height: 25px;
+	width: var(--button_width);
+	height: var(--button_height);
 	background: var(--slider_color);
-	/* border: 2.9px solid var(--slider_border_color); */
-	border-radius: 28px;
+	border-radius: var(--button_corner);
 	cursor: pointer;
-	margin-top: 0px;
 	/*Needed to keep the Edge thumb centred*/
   }
   input[type=range]:focus::-ms-fill-lower {
