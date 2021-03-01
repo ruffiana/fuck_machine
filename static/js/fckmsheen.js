@@ -1,4 +1,3 @@
-// var vid = document.getElementById('vid');
 var slider = document.getElementById('speedSlider');
 var canvas = document.getElementById('speedometer');
 var iCurrentSpeed = 0;
@@ -120,12 +119,8 @@ function setLabel(value) {
 }
 
 function setSpeed(value)
-{
 	// update slider to reflect current speed
 	slider.value = value;
-	
-	// set playback speed of video
-	// vid.playbackRate = 5.0 * (value / 100.0);
 
 	// update speedometer
 	drawWithInputValue(value);
