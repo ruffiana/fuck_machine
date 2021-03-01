@@ -5,15 +5,12 @@
 } */
 
 :root {
-	--main-bg-color: #360717;
-	--main-fg-color: #ec0c57;
-	--inactive-bg_color: #1e2a61;
-	--inactive-fg_color: #4d77eb;
-	--active-bg_color: #ec6597;
-	--active-fg_color: #f2a0c0;
-	--hover-bc_color: #2a397a;
-	--track_color: #572f36;
-	--track_focus_color: #572f36;
+	--main-bg-color: #181a2c;
+	--main-fg-color: #ff7fff;
+	--slider_color: #ff7fff;
+	--slider_border_color: #9e409e;
+	--track_color: #88888825;
+	--track_focus_color: #88888850;
  }
 
 html {
@@ -73,6 +70,10 @@ footer {
 	display:inline-block;
 }
 
+/* Table padding */
+td { 
+    padding: 8px;
+}
 
 /* UI component styles */
 label {
@@ -87,8 +88,8 @@ video{
 }
 
 input[type=range] {
-	width: 92vmin;
-	margin: -3.1px 0;
+	width: 440px;
+	/* margin: -3.1px 0; */
 	background-color: transparent;
 	-webkit-appearance: none;
   }
@@ -97,17 +98,16 @@ input[type=range] {
   }
   input[type=range]::-webkit-slider-runnable-track {
 	background: var(--track_color); /*#46262c*/
-	border: 0;
-	width: 100%;
-	height: 31.2px;
+	/* border: 0; */
+	height: 32px;
 	cursor: pointer;
   }
   input[type=range]::-webkit-slider-thumb {
 	margin-top: 3.1px;
 	width: 34px;
 	height: 25px;
-	background: var(--active-bg_color);
-	border: 2.9px solid var(--active-fg_color);
+	background: var(--slider_color);
+	/* border: 2.9px solid var(--slider_border_color); */
 	border-radius: 28px;
 	cursor: pointer;
 	-webkit-appearance: none;
@@ -118,15 +118,14 @@ input[type=range] {
   input[type=range]::-moz-range-track {
 	background: var(--track_color); /*#46262c*/
 	border: 0;
-	width: 100%;
 	height: 31.2px;
 	cursor: pointer;
   }
   input[type=range]::-moz-range-thumb {
 	width: 34px;
 	height: 25px;
-	background: var(--active-bg-color);
-	border: 2.9px solid var(--active-fg_color);
+	background: var(--slider_color);
+	/* border: 2.9px solid var(--slider_border_color); */
 	border-radius: 28px;
 	cursor: pointer;
   }
@@ -135,7 +134,6 @@ input[type=range] {
 	border-color: transparent;
 	border-width: 0 0;
 	color: transparent;
-	width: 100%;
 	height: 31.2px;
 	cursor: pointer;
   }
@@ -150,8 +148,8 @@ input[type=range] {
   input[type=range]::-ms-thumb {
 	width: 34px;
 	height: 25px;
-	background: var(--active-bg-color);
-	border: 2.9px solid var(--active-fg_color);
+	background: var(--slider_color);
+	/* border: 2.9px solid var(--slider_border_color); */
 	border-radius: 28px;
 	cursor: pointer;
 	margin-top: 0px;
@@ -172,54 +170,3 @@ input[type=range] {
 	  /*Edge starts the margin from the thumb, not the track as other browsers do*/
 	}
   }
-  
-.activebtn
-{
-	color: var(--active-fg_color) !important;
-	background-color: var(--active-bg_color) !important;
-}
-
-/* Style buttons */
-.speedbtn
-{
-	margin:0.1vmin;
-	color: var(--inactive-fg_color);
-	background-color: var(--inactive-bg_color);
-	border:none;
-	/* border-width: 3px;
-	border-color: #331111; */
-	/* border-radius: 4px;
-	-webkit-border-radius: 12;
-	-moz-border-radius: 12; */
-	width: 7vmin;
-	line-height: 12vmin;
-	font-size: 6vmin; /* Set a font size */
-	cursor: pointer; /* Mouse pointer on hover */
-	text-align: center;
-}
-.speedbtn:hover
-{
-	background-color: var(--hover-bc_color);
-}
-
-[class*="btn"] {
-	margin:0.1vmin;
-	background-color: var(--inactive-bg_color);
-	border:none;
-	/* border-width: 3px;
-	border-color: #331111; */
-	/* border-radius: 4px;
-	-webkit-border-radius: 12;
-	-moz-border-radius: 12; */
-	color: var(--inactive-fg_color);
-	width: 7vmin;
-	line-height: 12vmin;
-	font-size: 6vmin; /* Set a font size */
-	cursor: pointer; /* Mouse pointer on hover */
-	text-align: center;
- }
- 
- /* Darker background on mouse-over */
- [class*="btn"]:hover {
-	background-color: #2a2961;
- }
