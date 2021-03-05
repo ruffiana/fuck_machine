@@ -1,12 +1,15 @@
-# import os
-# basedir = os.path.abspath(os.path.dirname(__file__))
-# SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-# SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-#     'sqlite:///' + os.path.join(basedir, 'app.db')
-# SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-SPEED_LIMIT = 75
+# Port that web server is accessed through. Port 80 is default for http
 PORT = 80
-SHOW_VIDEO = False
-online = True
-speed = 0
+
+# Max resistance value to map to speed value. This needs to be set based on
+# digipot you're using
+RES_MAX = 127
+
+# Some motor drives expect higher resistance value to increase speed
+# if this flag is true then invert speed value before calculating
+# final resistancer value to send to digipot
+INVERT = False
+
+# This sets a scalar limit on speed control to keep asshats from killing you.
+# Range is 0 to 100
+SPEED_LIMIT = 100
