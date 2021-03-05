@@ -15,18 +15,18 @@ log.setLevel(logging.ERROR)
 
 # globals
 app = Flask(__name__)
-speed_control = Speed_Control(speed_limit=config.SPEED_LIMIT)
+speed_control = Speed_Control(
+					speed_limit=config.SPEED_LIMIT,
+					invert=config.INVERT,
+					res_max = config.RES_MAX
+					)
 
 
 # base html page
 @app.route('/')
 @app.route('/index')
 def index():
-	if config.SHOW_VIDEO == False:
-		hide_video = "none"
-	else:
-		hide_video = "show"
-	return render_template('index.html', hide_video=hide_video)
+	return render_template('index.html')
 
 
 # this is the route to the receiver which is where javascript updates events
