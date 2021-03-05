@@ -41,7 +41,7 @@ class Speed_Control():
     SPI_CLK_PIN = 11 # SPI_CLK
     SPI_SDISDO_PIN = 10 # SPI_MOSI
     
-    def __init__(self, speed_limit=50):
+    def __init__(self, speed_limit=50, invert=True, res_max=127):
         # define GPIO settings
         GPIO.setwarnings(False)         # do not show any warnings
         GPIO.setmode(GPIO.BCM)
@@ -49,18 +49,27 @@ class Speed_Control():
         GPIO.setup(self.SPI_CLK_PIN, GPIO.OUT)
         GPIO.setup(self.SPI_SDISDO_PIN, GPIO.OUT)
         
-        self._speed = 0
+        # parameters
+        self.INVERT = invert
+        self.RES_MAX = res_max
+        self.SPEED_LIMIT = speed_limit
+
         # num of steps in speed control widget's range
-        self.min_speed = 0
-        self.max_speed = 100
-        self.speed_limit = speed_limit
-        self.scaler = self.max_speed / self.speed_limit
+        self.SPEED_MIN = 0
+        self.SPEED_MAX = 100
+        # scalar for speed control to speed limit
+        self.SPEED_SCALAR = self.SPEED_MAX / self.SPEED_LIMIT
 
-        # this is maximum resistance value we write out to digipot
-        self.max_res = 127
-        self.res_step = self.max_res / self.max_speed
+        # scalar for mapping speed value to resistance value
+        self.RES_STEP = self.RES_MAX / self.SPEED_MAX
 
-        print(f"Speed Control initialized: Speed limiter = {self.speed_limit}")
+        # class variables
+        self._speed = 0
+
+        print(self.__str__())
+
+    def __str__(self):
+        return f"Speed Control initialized: Speed limiter:{self.SPEED_LIMIT} iNVERT:{self.INVERT}"
 
     @staticmethod
     def to_cubic(value):
@@ -78,8 +87,8 @@ class Speed_Control():
         GPIO.output(self.SPI_CLK_PIN, False)
         GPIO.output(self.SPI_CS_PIN, False)
 
-        # make sure given speed is between 0 and max_speed
-        self._speed = min(self.max_speed, max(self.min_speed, speed))
+        # make sure speed is clamped between min and max speed values
+        self._speed = min(self.SPEED_MAX, max(self.SPEED_MIN, speed))
         
         # convert speed to resistance value
         resistance = self.resistance
@@ -96,10 +105,17 @@ class Speed_Control():
     
     @property
     def resistance(self):
+        # apply speed scale
+        speed = self.speed / self.SPEED_SCALAR
+
+        # invert speed value if needed
+        if self.INVERT:
+            speed = self.SPEED_MAX - speed
+
         # Take current speed value between 0 and 100 and divide by speed scaler
         # derived from max speed and speed steps, then multiply by resistance
         # steps to get final clamped resistance value
-        return int((self.speed / self.scaler) * self.res_step)
+        return int(speed * self.RES_STEP)
 
     def cleanup(self):
         self.speed = 0
