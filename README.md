@@ -1,5 +1,5 @@
 # Fuck Machine Web-Page Control
-![Screenshot](static/images/Screenshot_01.JPG)
+![Screenshot](src/fuck_machine/static/images/Screenshot_01.JPG)
 
 ## Overview
 This project is intended to be used on a RPI (Raspberry Pi) in conjunction with a digital potenitiometer as the speed control for a fuck machine motor speed control.
