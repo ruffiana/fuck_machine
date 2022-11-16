@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+	<!-- <title>Ruffiana's Playground</title> -->
+	<meta name="description" content="Web interface for fuck machine speed control">
+	<meta name="author" content="ruffiana.plays@gmail.com">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="#">
+
+	<!-- CSS StyleSheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+	<!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Font for Title/Header text -->
+	<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+	<!-- Google Material Icons font -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<!-- Javascript code -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+	<!-- Script for fuck machine speed control -->
+	<script type="module" src="{{ url_for('static', filename='js/fckmsheen.js') }}"></script>
+</head>
+
+<body>
+	<section id="section_app">
+		<section id="section_title">
+			<table id="table_title">
+				<td><img id="logo" src="{{ url_for('static', filename='images/avatar_ruffiana.png') }}">
+				</td>
+				<td><label id="title">Ruffiana's Playground</label>
+				</td>
+			</table>
+		</section>
+		<section id="section_speedometer">
+			<!-- <video id="vid" loop muted autoplay style="display: {{ hide_video }};">
+				<source src="{{ url_for('static', filename='video/sissy_fuck_machine.mp4') }}" type="video/mp4">
+			</video> -->
+			<canvas id="speedometer" width=440 height=330 style="display: false">Canvas not available.</canvas>
+			<!-- <canvas id="speedometer">Canvas not available.</canvas> -->
+			<!-- <canvas id="speedometer">Canvas not available.</canvas> -->
+		</section>
+		<section id="section_controls">
+			<div id="div_patterns">
+				<!-- <button class="patternButtons" id="patternPrev" type="button">⯇</button> -->
+				<select id="patternList">
+					<option value="constant">CONSTANT</option>
+					<option value="random">RANDOM</option>
+					<option value="wave">WAVE</option>
+					<option value="ripple">RIPPLE</option>
+				</select>
+				<!-- <button class="button-patterns" id="patternNext" type="button">⯈</button> -->
+			</div>
+			<table class="table_slider">
+				<td><i class="material-symbols-rounded icon-min" style="font-size:6vmin">signal_cellular_1_bar</i>
+				</td>
+				<td><input class="controlSlider" id="speedSlider" type="range" min="0" max="100" step="1" value="0">
+				</td>
+				<td><i class="material-symbols-rounded" style="font-size:6vmin">signal_cellular_4_bar</i></td>
+			</table>
+			<table class="table_slider">
+				<td><i class="material-symbols-rounded icon-min" style="font-size:6vmin">network_wifi_1_bar</i>
+				</td>
+				<td><input class="controlSlider" id="freqSlider" type="range" min="0" max="100" step="1" value="50">
+				</td>
+				<td><i class="material-symbols-rounded" style="font-size:6vmin">network_wifi</i></td>
+			</table>
+		</section>
+		<section id="section-connection">
+			<i id="connection" class="material-symbols-rounded icon" style="font-size:6vmin">link_off</i>
+		</section>
+	</section>
+</body>
+
+</html>

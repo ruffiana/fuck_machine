@@ -1,0 +1,260 @@
+:root {
+	/* --canvas_height: 45vh;
+	--canvas_width: 60vh; */
+	--canvas_height: 35vh;
+	--canvas_width: 47vh;
+
+	/* Main foreground/background colors */
+	--color_background: rgb(24, 26, 44);
+	--color_foreground: rgb(255, 127, 255);
+	/* custom colors */
+	--color_pink: rgb(255, 127, 255);
+	--color_pink_muted: rgb(127, 63, 127);
+	--color_gray: rgb(127, 111, 127);
+	--color_gray_dark: rgb(47, 39, 47);
+	--color_warning: rgb(255, 191, 0);
+	--color_danger: rgb(255, 0, 0);
+	/* Pattern select list colors */
+	--color_select_background: rgba(127, 63, 127, 0.5);
+	/* Speed/Freq slider track gradient colors */
+	--color_slider_track1: rgba(255, 127, 255, 0.125);
+	--color_slider_track2: rgba(255, 127, 255, 0.5);
+}
+
+/* globals */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	color: var(--color_foreground);
+	background: var(--color_background);
+	/* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+	font-size: 6vh;
+	/* letter-spacing: 0.0625em; */
+	align-items: center;
+	align-content: center;
+	vertical-align: middle;
+	width: min-content;
+}
+
+/* UI component styles */
+section {
+	margin: auto;
+	/* width: fit-content; */
+
+	/* Using this border is a good way to debug section layouts */
+	/* border: 3px dashed var(--color_pink_muted); */
+}
+
+div {
+	margin: auto;
+	/* border: 2px dashed var(--color_pink_muted); */
+	/* padding: 8px; */
+}
+
+table {
+	/* padding: 0.125rem; */
+	padding: 2vh;
+	vertical-align: middle;
+	text-align: center;
+}
+
+/* canvas {
+	background-color: #ccc;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 440px;
+	height: 330px;
+} */
+
+/* #table-title {
+	width: fit-content
+}
+ */
+
+#section_app {
+	margin: 0px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+#section_title {
+	transform: translate(0px, 2vh);
+}
+
+#logo {
+	width: 16vh;
+}
+
+#title {
+	font-family: 'Berkshire Swash', cursive;
+	font-size: 6vh;
+	line-height: 6vh;
+	/* padding: 1vh; */
+	background: linear-gradient(white, var(--color_pink));
+	background-clip: text;
+	box-decoration-break: clone;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-box-decoration-break: clone;
+}
+
+/* #section_speedometer {
+	width: var(--canvas_width);
+	height: var(--canvas_height) *2;
+} */
+
+#speedometer {
+	width: var(--canvas_width);
+	height: var(--canvas_height);
+}
+
+/* #div_patterns {
+	height: auto;
+	padding: 0.5vh;
+} */
+
+#patternList {
+	appearance: none;
+	text-align: center;
+	/* font-family: 'Comfortaa', Arial, sans-serif; */
+	font-size: 2.5vh;
+	letter-spacing: 1vh;
+	color: var(--color_foreground);
+	/* background: linear-gradient(to top, var(--slider-track-color1), var(--slider-track-color2)); */
+	background-color: var(--color_slider_track1);
+	height: 8vh;
+	width: 34vh;
+	border-radius: 8vh;
+	border-width: 0px;
+	border-color: transparent;
+	outline: none;
+}
+
+#patternList:focus {
+	background-color: var(--color_pink_muted);
+}
+
+#section_controls {
+	width: 100%;
+	padding: 0px;
+}
+
+#div_patterns {
+	padding: 0px;
+}
+
+.table_slider {
+	/* padding: 0.125rem; */
+	padding: 0px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+input[type=range] {
+	width: 47vh;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	background: linear-gradient(to right, var(--color_slider_track1), var(--color_slider_track2));
+	/* border: 0; */
+	height: 4.7vh;
+	cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	width: 6vh;
+	height: 4.7vh;
+	background: var(--color_pink);
+	border-radius: 4.7vh;
+	cursor: pointer;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.material-symbols-rounded {
+	size: 4.7vh;
+	width: 4.7vh;
+	/* font-size: 5vh; */
+}
+
+.icon-min {
+	color: var(--color_pink_muted);
+}
+
+#section-connection {
+	text-align: center;
+	height: auto;
+	padding: 1vh
+		/* padding: 4px; */
+}
+
+#connection {
+	color: var(--color_pink_muted);
+}
+
+/* input[type=range]::-moz-range-track {
+	background: var(--track_color);
+	border: 0;
+	height: var(--slider_height);
+	cursor: pointer;
+} */
+
+/* input[type=range]::-moz-range-thumb {
+	width: var(--button_width);
+	height: var(--button_height);
+	background: var(--slider_color);
+	border-radius: var(--button_corner);
+	cursor: pointer;
+} */
+
+/* input[type=range]::-ms-track {
+	background: transparent;
+	border-color: transparent;
+	border-width: 0 0;
+	color: transparent;
+	height: var(--slider_height);
+	cursor: pointer;
+} */
+
+/* input[type=range]::-ms-thumb {
+	width: var(--button_width);
+	height: var(--button_height);
+	background: var(--slider_color);
+	border-radius: var(--button_corner);
+	cursor: pointer;
+	//Needed to keep the Edge thumb centred
+} */
+
+/* input[type=range]::-ms-fill-upper {
+	background: var(--track_focus_color);
+	border: 0;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+	background: var(--track_focus_color);
+}
+
+input[type=range]::-ms-fill-lower {
+	background: var(--track_focus_color);
+	border: 0;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: var(--track_focus_color);
+} */

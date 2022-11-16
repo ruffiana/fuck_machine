@@ -1,2 +1,3 @@
 Flask
+matplotlib
 git+https://github.com/sn4k3/FakeRPi
